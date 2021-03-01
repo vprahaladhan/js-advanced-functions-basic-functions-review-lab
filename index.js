@@ -19,8 +19,16 @@ const actionApplyer = (baseNum, arrayOfTransforms) => {
     return baseNum;
   }
 
-  for (const transform of arrayOfTransforms) {
-    baseNum = transform(baseNum);
-  }
-  return baseNum;
+  return actionApplyer(arrayOfTransforms[0](baseNum), arrayOfTransforms.slice(1));
 }
+
+// const actionApplyer = (baseNum, arrayOfTransforms) => {
+//   if (arrayOfTransforms.length === 0) {
+//     return baseNum;
+//   }
+
+//   for (const transform of arrayOfTransforms) {
+//     baseNum = transform(baseNum);
+//   }
+//   return baseNum;
+// }
